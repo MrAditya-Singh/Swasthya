@@ -226,6 +226,13 @@ async function runDoctorAssignmentTests() {
         // Progress to PATIENT_REACHED
         await transitionReferral({
             referralId: ref2Id,
+            toStatus: REFERRAL_STATES.ACCEPTED,
+            actorUserId: facilityStaffUser.id,
+            actorRole: 'FACILITY_STAFF',
+            reason: 'Facility staff accepted referral'
+        });
+        await transitionReferral({
+            referralId: ref2Id,
             toStatus: REFERRAL_STATES.PATIENT_IN_TRANSIT,
             actorUserId: healthWorkerUser.id,
             actorRole: 'HEALTH_WORKER',
